@@ -7,5 +7,8 @@ import Users from './views/Users.vue';
 Vue.use(Router) // プラグインの適用
 
 export default new Router({ // ルーティング main.jsにて登録
+  // historyモードでURLに「#」が付かなくなる
+  // ただし、そのURLに対応したindex.htmlを用意する必要がある
+  mode: "history",
   routes: [{path: '/', component: Home}, {path: '/users', component: Users}]
 });

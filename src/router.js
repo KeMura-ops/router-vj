@@ -10,5 +10,7 @@ export default new Router({ // ルーティング main.jsにて登録
   // historyモードでURLに「#」が付かなくなる
   // ただし、そのURLに対応したindex.htmlを用意する必要がある
   mode: "history",
-  routes: [{path: '/', component: Home}, {path: '/users', component: Users}]
+  routes: [{path: '/', component: Home}, 
+  // :(コロン)で動的なURLを作成できる
+  {path: '/users/:id', component: Users}]
 });

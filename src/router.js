@@ -11,6 +11,6 @@ export default new Router({ // ルーティング main.jsにて登録
   // ただし、そのURLに対応したindex.htmlを用意する必要がある
   mode: "history",
   routes: [{path: '/', component: Home}, 
-  // :(コロン)で動的なURLを作成できる
-  {path: '/users/:id', component: Users}]
+  // propsオプションをtrueにする
+  {path: '/users/:id', component: Users, props: true }]
 });

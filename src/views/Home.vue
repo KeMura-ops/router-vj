@@ -9,8 +9,11 @@
   export default {
     methods: {
       toUsers() {
-        // ビュールーターへのアクセス
-        this.$router.push({ path: 'users' }); // push('users');でも良い
+        // Homeからアクセスする
+        this.$router.push({
+          name: 'users-id-profile',
+          params: {id: 1}
+          });
       }
     }
   }

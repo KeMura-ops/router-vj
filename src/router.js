@@ -20,7 +20,8 @@ export default new Router({ // ルーティング main.jsにて登録
       // ネストされたrouter-viewに表示させるコンポーネントの登録
       children: [
         { path: "posts", component: UsersPosts},
-        { path: "profile", component: UsersProfile}
+        // name属性を付与し、そのnameをpathの代替にする
+        { path: "profile", component: UsersProfile, name: "users-id-profile"}
       ]
     }
   ]

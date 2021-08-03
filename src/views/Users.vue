@@ -6,7 +6,8 @@
     <hr>
     <!-- ルートコンポーネントの再利用性を高めるためにはpropsの値で受け取る -->
     <h1>User No. {{ id }}</h1>
-    <!-- ネストされたrouter-viewの使用 -->
+    <!-- v-bindでto属性を動的に表現する -->
+    <router-link :to="'/users/' + (Number(id) + 1) + '/profile'">次のユーザー</router-link>
     <router-view></router-view>
   </div>
 </template>

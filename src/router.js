@@ -39,6 +39,10 @@ export default new Router({ // ルーティング main.jsにて登録
         // name属性を付与し、そのnameをpathの代替にする
         { path: "profile", component: UsersProfile, name: "users-id-profile"}
       ]
+    }, {
+      // URLにマッチしない全てのパスを、指定のページへとリダイレクトする記述
+      path: "*",
+      redirect: "/"
     }
   ]
 });

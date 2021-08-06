@@ -27,7 +27,12 @@ export default new Router({ // ルーティング main.jsにて登録
         default: Users,
         header:HeaderUser
       },
-      props: true,
+      // 名前付きビューにpropsをオブジェクトにして指定する必要がある
+      // Users.vueのexport default { props: ["id"] };を適用している
+      props: {
+        default: true,
+        header: false
+      },
       // ネストされたrouter-viewに表示させるコンポーネントの登録
       children: [
         { path: "posts", component: UsersPosts},

@@ -44,5 +44,13 @@ export default new Router({ // ルーティング main.jsにて登録
       path: "*",
       redirect: "/"
     }
-  ]
+  ],
+  // スクロールの挙動を指定する関数
+  scrollBehavior() {
+    return {
+      selector: '#next-user',
+      // y軸に100px分取る
+      // offset: { x: 0, y: 100 }
+    };
+  }
 });

@@ -46,11 +46,17 @@ export default new Router({ // ルーティング main.jsにて登録
     }
   ],
   // スクロールの挙動を指定する関数
-  scrollBehavior() {
-    return {
-      selector: '#next-user',
-      // y軸に100px分取る
-      // offset: { x: 0, y: 100 }
-    };
+  // 3つの引数を取るパターン
+  scrollBehavior(to, from, savedPosition) {
+    // 保持した前回のページ位置にスクロールする
+    if (savedPosition) {
+      return savedPosition
+    }
+    // 中身に#(ハッシュ)が存在すればそこにスクロールする
+    if (to.hash) {
+      return {
+        selector: to.hash
+      };
+    }
   }
 });

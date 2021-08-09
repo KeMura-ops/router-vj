@@ -17,8 +17,7 @@
 export default {
   methods: {
     beforeEnter() {
-      // $rootでmain.jsにあるVueインスタンスにアクセスしている(App.vueということになる)
-      this.$root.$emit('triggerScroll');
+      this.$root.$emit("triggerScroll");
     }
   }
 };

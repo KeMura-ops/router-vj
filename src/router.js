@@ -7,7 +7,6 @@ import UsersPosts from './views/UsersPosts.vue';
 import UsersProfile from './views/UsersProfile.vue';
 import HeaderHome from './views/HeaderHome.vue';
 import HeaderUser from './views/HeaderUser.vue';
-import { resolve } from 'core-js/fn/promise';
 
 Vue.use(Router) // プラグインの適用
 
@@ -46,14 +45,11 @@ export default new Router({ // ルーティング main.jsにて登録
       redirect: "/"
     }
   ],
-  // スクロールの挙動を指定する関数
-  // 3つの引数を取るパターン
   scrollBehavior(to, from, savedPosition) {
-    // トランジションにスクロールを適用する際の非同期処理
+    // App.vueの$emitの処理をrouter.jsで受け取る
     return new Promise(resolve => {
-      // この場合のthisはnew Routerで生成したインスタンスを指す
-      this.app.$root.$once('triggerScroll', () => {
-        let position = {x: 0, y: 0}
+      this.app.$root.$once("triggerScroll", () => {
+        let position = { x: 0, y: 0 };
         if (savedPosition) {
           position = savedPosition;
         }
@@ -62,7 +58,7 @@ export default new Router({ // ルーティング main.jsにて登録
             selector: to.hash
           };
         }
-        resolve(position)
+        resolve(position);
       });
     });
   }

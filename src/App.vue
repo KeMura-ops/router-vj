@@ -3,9 +3,26 @@
     <!-- router-viewコンポーネントでルーティングするコンポーネントを使用 -->
     <!-- 名前付きルータービューの使用(HeaderUser.vueの使用) -->
     <router-view name="header"></router-view>
-    <router-view></router-view>
+    <transition
+      name="fade"
+      mode="out-in"
+      @before-enter="beforeEnter"
+    >
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    beforeEnter() {
+      // $rootでmain.jsにあるVueインスタンスにアクセスしている(App.vueということになる)
+      this.$root.$emit('triggerScroll');
+    }
+  }
+};
+</script>
 
 <style scoped>
   .fade-enter,

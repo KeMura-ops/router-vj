@@ -5,6 +5,6 @@ import router from './router' // ルーターをVue.jsに適用させる
 Vue.config.productionTip = false
 
 new Vue({
-  router: router, // routerのみの登録で可能
+  router: router, // router.jsのthis.appを指す
   render: h => h(App),
 }).$mount('#app')

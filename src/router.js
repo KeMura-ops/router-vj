@@ -20,10 +20,6 @@ export default new Router({ // ルーティング main.jsにて登録
     default: Home,
     header:HeaderHome
     },
-    // 特定のページ(この場合は「/」、すなわちホーム)に遷移する前に特定の処理をしたい場合
-    beforeEnter(to, from, next) {
-      next(false); // ホームにアクセスできないようにする処理
-    }
   },
     // propsオプションをtrueにする
     { path: '/users/:id',

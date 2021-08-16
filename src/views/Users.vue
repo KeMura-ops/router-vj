@@ -20,6 +20,27 @@
 
 <script>
 export default {
-  props: ["id"]
+  props: ["id"],
+    beforeRouteEnter(to, from, next) {
+    // コンポーネントが表示される際に実行される処理
+    next(vm => {
+      console.log(vm.id);
+    })
+  },
+    beforeRouteUpdate(to, from, next) {
+    // コンポーネントの値がアップデートされた時に実行
+    console.log('Update');
+    next()
+  },
+    beforeRouteLeave(to, from, next) {
+    // 他のページに遷移する時に実行
+    console.log('Leave');
+    const isLeave = window.confirm('このページから離れますか？');
+    if (isLeave) {
+      next();
+    } else {
+      next(false);
+    }
+  }
 };
 </script>

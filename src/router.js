@@ -1,12 +1,33 @@
 import Vue from 'vue';
 import Router from 'vue-router'; // プラグイン(Vue.js全体に影響を与えるもの)
-// views配下にあるコンポーネントのインポート
-import Home from './views/Home.vue';
-import Users from './views/Users.vue';
-import UsersPosts from './views/UsersPosts.vue';
-import UsersProfile from './views/UsersProfile.vue';
-import HeaderHome from './views/HeaderHome.vue';
-import HeaderUser from './views/HeaderUser.vue';
+
+// views配下にあるコンポーネントのインポート(Router下のコンポーネント)
+// import Home from './views/Home.vue';
+// import Users from './views/Users.vue';
+// import UsersPosts from './views/UsersPosts.vue';
+// import UsersProfile from './views/UsersProfile.vue';
+// import HeaderHome from './views/HeaderHome.vue';
+// import HeaderUser from './views/HeaderUser.vue';
+
+/*
+  以下のような記述で該当するページが必要な時のみロードする
+  webpackChunkName」でコメントアウトするとコンポーネントに名前を付けられる
+  動的インポート、遅延ローディングを用いることで必要な時に必要なデータを入手できるようになる
+  VueCLI3においては自動的に「prefetch」と言うものが付与され、ロードの際に専用の箱に入れtくれる
+  遅延ローディングを用いることでVueアプリの快適性が担保される
+*/
+const Home = () =>
+  import(/* webpackChunkName: 'Home' */ './views/Home.vue');
+const Users = () =>
+  import(/* webpackChunkName: 'Users' */'./views/Users.vue');
+const UsersPosts = () =>
+  import(/* webpackChunkName: 'UsersPosts' */'./views/UsersPosts.vue');
+const UsersProfile = () =>
+  import(/* webpackChunkName: 'UsersProfile' */'./views/UsersProfile.vue');
+const HeaderHome = () =>
+  import(/* webpackChunkName: 'HeaderHome' */'./views/HeaderHome.vue');
+const HeaderUser = () =>
+  import(/* webpackChunkName: 'HeaderUser' */'./views/HeaderUser.vue');
 
 Vue.use(Router) // プラグインの適用
 

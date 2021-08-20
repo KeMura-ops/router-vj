@@ -4,8 +4,24 @@
     <router-link to="/" active-class="link--active" exact="" class="link">Home</router-link>
     <!-- ブラウザから直接アクセスすることによってスクロールが可能であるが、Vuerouter側の仕様としてそれは出来ない -->
     <router-link :to="{ name: 'users-id-profile', params: {id: 1}, query: { lang: 'ja', page: 2 }, hash: '#next-user'}" active-class="link--active" exact="" class="link">Users</router-link>
+    <button @click="inc">+1</button>
+    <button @click="dec">-1</button>
   </nav>
 </template>
+
+<script>
+  export default {
+    methods: {
+      // Vuexのプロパティにアクセス
+      inc() {
+        this.$store.state.count++;
+      },
+      dec() {
+        this.$store.state.count--;
+      }
+    }
+  }
+</script>
 
 <style scoped>
   .link {

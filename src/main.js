@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router' // ルーターをVue.jsに適用させる
+import store from './store' // ストア(Vuex)の適用
 
 Vue.config.productionTip = false
 
@@ -12,5 +13,6 @@ router.beforeEach((to, from, next) => {
 
 new Vue({
   router, // router.jsのthis.appを指す
+  store, // Vuex
   render: h => h(App),
 }).$mount('#app')

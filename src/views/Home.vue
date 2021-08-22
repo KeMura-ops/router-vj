@@ -2,24 +2,23 @@
   <div>
     <h3>Home</h3>
     <button @click="toUsers">Usersのページへ行く</button>
-    <p>{{ count }}</p>
+    <!-- オブジェクトで取得する場合 -->
+    <!-- <p>{{ myComponentDoubleCount }}</p> -->
+    <p>{{ doubleCount }}</p>
     <p>{{ tripleCount }}</p>
   </div>
 </template>
 
 <script>
+  // mapGettersのインポート
+  import { mapGetters } from "vuex";
+
   export default {
-    // Vuexのプロパティにはcomputedを用いてアクセスする
-    computed: {
-      count() {
-        // main.jsとstore.jsに記述することによって全体で「$store」が使用できるようになる
-        // Vuex側の算出プロパティgettersの使用
-        return this.$store.getters.doubleCount;
-      },
-      tripleCount() {
-        return this.$store.getters.tripleCount;
-      }
-    },
+    // mapGettersを用いて配列もしくはオブジェクトで記述することによりVuexのプロパティにアクセスできる
+    computed: mapGetters(["doubleCount", "tripleCount"]), // 配列で取得
+    /* computed: mapGetters({ // オブジェクトで取得
+      myComponentDoubleCount: "doubleCount"
+    }), */
     methods: {
       toUsers() {
         // Homeからアクセスする

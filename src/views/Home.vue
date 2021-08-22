@@ -2,8 +2,6 @@
   <div>
     <h3>Home</h3>
     <button @click="toUsers">Usersのページへ行く</button>
-    <!-- オブジェクトで取得する場合 -->
-    <!-- <p>{{ myComponentDoubleCount }}</p> -->
     <p>{{ doubleCount }}</p>
     <p>{{ tripleCount }}</p>
   </div>
@@ -14,11 +12,13 @@
   import { mapGetters } from "vuex";
 
   export default {
-    // mapGettersを用いて配列もしくはオブジェクトで記述することによりVuexのプロパティにアクセスできる
-    computed: mapGetters(["doubleCount", "tripleCount"]), // 配列で取得
-    /* computed: mapGetters({ // オブジェクトで取得
-      myComponentDoubleCount: "doubleCount"
-    }), */
+    computed: {
+      /*
+      スプレッド演算子「...」を使用し、mapGettersをcomputedに結合することで
+      その他のcomputedも記述できる
+      */
+      ...mapGetters(["doubleCount", "tripleCount"])
+    },
     methods: {
       toUsers() {
         // Homeからアクセスする

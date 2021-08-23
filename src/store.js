@@ -10,5 +10,14 @@ export default new Vuex.Store({ // データ置き場(グローバル変数の�
   getters: { // 算出プロパティ(Vuexにおけるdataの初期値を変更するcomputedの役割を果たすもの)
     doubleCount: state => state.count * 2,
     tripleCount: state => state.count * 3
+  },
+  // 現状ではVuexのstateがグローバルな値になっているので、「mutations」を用いてそこから変更できるようにする
+  mutations: { // データの予測、追跡をしやすくするために「mutations」を利用する
+    increment(state, number) {
+      state.count += number;
+    },
+    decrement(state, number) {
+      state.count -= number;
+    }
   }
 })

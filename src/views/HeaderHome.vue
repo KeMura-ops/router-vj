@@ -14,10 +14,10 @@
     methods: {
       // Vuexのプロパティにアクセス
       inc() {
-        this.$store.state.count++;
+        this.$store.commit('increment', 2); // 「commit」でミューテーションにアクセス
       },
       dec() {
-        this.$store.state.count--;
+        this.$store.commit('decrement', 2);
       }
     }
   }

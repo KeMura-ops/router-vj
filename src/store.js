@@ -19,5 +19,13 @@ export default new Vuex.Store({ // データ置き場(グローバル変数の�
     decrement(state, number) {
       state.count -= number;
     }
+  },
+  actions: { // Vuexにおいて非同期処理をしたい場合に用いる
+    increment({ commit }, number) {
+      commit('increment', number);
+    },
+    decrement({ commit }, number) {
+      commit('decrement', number);
+    }
   }
 })

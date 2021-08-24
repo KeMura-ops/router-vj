@@ -10,11 +10,14 @@
 </template>
 
 <script>
-  // mapMutationsを用いてコンポーネントから参照する
-  import { mapMutations } from "vuex";
   export default {
     methods: {
-      ...mapMutations(["increment", "decrement"])
+      increment() {
+        this.$store.dispatch('increment', 2); // dispatchでストアのアクションを実行する
+      },
+      decrement() {
+        this.$store.dispatch('decrement', 2); // dispatchでストアのアクションを実行する
+      }
     }
   }
 </script>

@@ -10,14 +10,12 @@
 </template>
 
 <script>
+  import { mapActions } from "vuex";
+
   export default {
     methods: {
-      increment() {
-        this.$store.dispatch('increment', 2); // dispatchでストアのアクションを実行する
-      },
-      decrement() {
-        this.$store.dispatch('decrement', 2); // dispatchでストアのアクションを実行する
-      }
+      // mapActionsを使用してActionsをコンポーネントで使用する
+      ...mapActions(["increment", "decrement"])
     }
   }
 </script>

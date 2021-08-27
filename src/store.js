@@ -5,11 +5,13 @@ Vue.use(Vuex); // Vue全体で特定のプラグインを適用すると言う�
 
 export default new Vuex.Store({ // データ置き場(グローバル変数のようなもの)
   state: { // 状態という意味
-    count: 2 // プロパティ
+    count: 2, // プロパティ
+    message: ""
   },
   getters: { // 算出プロパティ(Vuexにおけるdataの初期値を変更するcomputedの役割を果たすもの)
     doubleCount: state => state.count * 2,
-    tripleCount: state => state.count * 3
+    tripleCount: state => state.count * 3,
+    message: state => state.message
   },
   // 現状ではVuexのstateがグローバルな値になっているので、「mutations」を用いてそこから変更できるようにする
   mutations: { // データの予測、追跡をしやすくするために「mutations」を利用する
@@ -18,6 +20,9 @@ export default new Vuex.Store({ // データ置き場(グローバル変数の�
     },
     decrement(state, number) {
       state.count -= number;
+    },
+    updateMessage(state, newMessage) {
+      state.message = newMessage;
     }
   },
   actions: { // Vuexにおいて非同期処理をしたい場合に用いる
@@ -26,6 +31,9 @@ export default new Vuex.Store({ // データ置き場(グローバル変数の�
     },
     decrement({ commit }, number) {
       commit('decrement', number);
+    },
+    updateMessage({commit}, newMessage) {
+      commit("updateMessage", newMessage);
     }
   }
 })

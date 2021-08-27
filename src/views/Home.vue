@@ -4,6 +4,8 @@
     <button @click="toUsers">Usersのページへ行く</button>
     <p>{{ doubleCount }}</p>
     <p>{{ tripleCount }}</p>
+    <input type="text" :value="message" @input="updateMessage">
+    <p>{{ message }}</p>
   </div>
 </template>
 
@@ -17,9 +19,15 @@
       スプレッド演算子「...」を使用し、mapGettersをcomputedに結合することで
       その他のcomputedも記述できる
       */
-      ...mapGetters(["doubleCount", "tripleCount"])
+      ...mapGetters(["doubleCount", "tripleCount"]),
+      message() {
+        return this.$store.getters.message;
+      }
     },
     methods: {
+      updateMessage(e) {
+        this.$store.dispatch("updateMessage", e.target.value)
+      },
       toUsers() {
         // Homeからアクセスする
         this.$router.push({

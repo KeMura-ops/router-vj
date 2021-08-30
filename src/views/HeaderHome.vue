@@ -15,7 +15,7 @@
   export default {
     methods: {
       // mapActionsを使用してActionsをコンポーネントで使用する
-      ...mapActions("count", ["increment", "decrement"])
+      ...mapActions(["increment", "decrement"])
     }
   }
 </script>

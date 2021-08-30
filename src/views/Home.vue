@@ -10,8 +10,11 @@
 </template>
 
 <script>
+  import { mapGetters } from "vuex";
+  
   export default {
     computed: {
+      ...mapGetters(["doubleCount", "tripleCount"]),
       message: {
         get() {
           return this.$store.getters.message;

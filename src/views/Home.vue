@@ -10,11 +10,19 @@
 </template>
 
 <script>
-  import { mapGetters } from "vuex";
+  // import { mapGetters } from "vuex";
   
   export default {
     computed: {
-      ...mapGetters("count", ["doubleCount", "tripleCount"]),
+      //  ...mapGetters("count", ["doubleCount", "tripleCount"]),
+      // mapGettersを使用しない場合の名前空間の記述
+      doubleCount() {
+        // namespacedを用いるとゲッターズやアクションに「count/」というような名前が付く
+        return this.$store.getters["count/doubleCount"]
+      },
+      tripleCount() {
+        return this.$store.getters["count/tripleCount"]
+      },
       message: {
         get() {
           return this.$store.getters.message;

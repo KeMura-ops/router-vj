@@ -26,6 +26,11 @@ const actions = {
 };
 
 export default {
+  // 名前空間
+  /*
+    各モジュール間で、gettersやmutationsなど同じ名前のものをそのまま使用できるようにする
+  */
+  namespaced: true,
   state,
   getters,
   mutations,

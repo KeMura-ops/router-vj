@@ -14,7 +14,7 @@
   
   export default {
     computed: {
-      ...mapGetters(["doubleCount", "tripleCount"]),
+      ...mapGetters("count", ["doubleCount", "tripleCount"]),
       message: {
         get() {
           return this.$store.getters.message;
